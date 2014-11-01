@@ -16,4 +16,5 @@ Requirements:
     pip install -r requirements.txt
     
 Для компиляции в исполняемый файл \*.exe можно воспользоваться cx-Freeze 4.3.3
+
 Под Windows ее можно найти [здесь](http://www.lfd.uci.edu/~gohlke/pythonlibs/#cx_freeze)
