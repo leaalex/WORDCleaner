@@ -22,6 +22,19 @@ def create_ol(text):
     return text
 ############################################################
 
+##################  Тестирование функций  ##################
+def create_il(text):
+    def create_li(m):
+        text = m.group(0)
+        text = re.sub('(?s)<p>·(.*?)</p>', '<li>\g<1></li>', text)
+        text = '<il>\n'+text+'</il>\n'
+        return text
+
+    text = re.sub(r'(?s)((<p>\s*·.*?</p>\n)+)', create_li, text)
+    text = re.sub(r'\n\n\Z', '', text)
+    return text
+############################################################
+
 ##################  Работа с таблицами  ##################
 def create_tab(text):
     def create_tr(m):
@@ -109,6 +122,7 @@ def gethtml(*args):
         data = re.sub(r'<\!\[if \!supportLists\]>', '', data)
         data = re.sub(r'<\!\[endif\]>', '', data)
         data = create_ol(data)
+        #data = create_il(data) Тестирование замены ненумерованого списка
         data = create_tab(data)
 
         print("-----------in clipboard -----------")
